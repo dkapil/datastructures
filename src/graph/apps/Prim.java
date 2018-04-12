@@ -19,9 +19,8 @@ public class Prim<T, W> {
 		root.setDistance(0);
 
 		List<Vertex<T>> minPriorityQueue = new ArrayList<>();
-		minPriorityQueue.sort(Comparator.comparingInt(Vertex::getDistance));
-
 		minPriorityQueue.addAll(graph.getAllVertices());
+		minPriorityQueue.sort(Comparator.comparingInt(Vertex::getDistance));
 
 		System.out.println(minPriorityQueue);
 

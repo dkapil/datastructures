@@ -209,7 +209,7 @@ public class Vertex<VALUE> {
 	 */
 	@Override
 	public String toString() {
-		return String.valueOf(this.value + ":" + this.distance);
+		return String.valueOf(this.value);
 	}
 
 }
