@@ -1,8 +1,7 @@
-package graph.apps.demos;
+package graph.apps.shortestpaths.singlesource;
 
 import java.util.Arrays;
 
-import graph.apps.BellmanFord;
 import graph.models.Graph;
 import graph.models.GraphList;
 import graph.models.Vertex;
@@ -12,11 +11,11 @@ public class BellmanFordDemo {
 	public static void main(String[] args) {
 		Graph<String, Integer> graph = new GraphList<>();
 
-		Vertex<String> s = new Vertex<String>(1, "s");
-		Vertex<String> t = new Vertex<String>(2, "t");
-		Vertex<String> y = new Vertex<String>(3, "y");
-		Vertex<String> x = new Vertex<String>(4, "x");
-		Vertex<String> z = new Vertex<String>(5, "z");
+		Vertex<String> s = new Vertex<>(1, "s");
+		Vertex<String> t = new Vertex<>(2, "t");
+		Vertex<String> y = new Vertex<>(3, "y");
+		Vertex<String> x = new Vertex<>(4, "x");
+		Vertex<String> z = new Vertex<>(5, "z");
 
 		graph.initialize(Arrays.asList(s, t, y, x, z));
 
@@ -28,8 +27,8 @@ public class BellmanFordDemo {
 
 		graph.print();
 
-		BellmanFord<String, Integer> bellmanFord = new BellmanFord<>();
-		System.out.println(bellmanFord.build(graph));
+		BellmanFord<String> bellmanFord = new BellmanFord<>();
+		System.out.println(bellmanFord.build(graph, s));
 
 		graph.getAllVertices().forEach(v -> {
 			System.out.println(v + ":" + v.getDistance());

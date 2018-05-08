@@ -1,4 +1,4 @@
-package graph.apps.demos;
+package graph.apps;
 
 import java.util.Arrays;
 
@@ -13,11 +13,11 @@ public class GraphDemo {
 
 		Graph<Integer, Integer> graphMatrix = new GraphMatrix<>();
 
-		Vertex<Integer> zero = new Vertex<Integer>(0, 0);
-		Vertex<Integer> one = new Vertex<Integer>(1, 1);
-		Vertex<Integer> two = new Vertex<Integer>(2, 2);
-		Vertex<Integer> three = new Vertex<Integer>(3, 3);
-		Vertex<Integer> four = new Vertex<Integer>(4, 4);
+		Vertex<Integer> zero = new Vertex<>(0, 0);
+		Vertex<Integer> one = new Vertex<>(1, 1);
+		Vertex<Integer> two = new Vertex<>(2, 2);
+		Vertex<Integer> three = new Vertex<>(3, 3);
+		Vertex<Integer> four = new Vertex<>(4, 4);
 
 		graphMatrix.initialize(Arrays.asList(zero, one, two, three, four));
 		graphMatrix.addEdge(zero, one).addEdge(zero, four).addEdge(one, zero).addEdge(one, two).addEdge(one, three)

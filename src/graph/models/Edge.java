@@ -19,6 +19,10 @@ public class Edge<T, W> {
 
 	W weight;
 
+	int flow;
+
+	int capacity;
+
 	/**
 	 * Gets the source.
 	 *
@@ -76,6 +80,49 @@ public class Edge<T, W> {
 		this.weight = weight;
 	}
 
+	/**
+	 * Sets the capacity.
+	 *
+	 * @param capacity
+	 *            the new capacity
+	 */
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	/**
+	 * Gets the capacity.
+	 *
+	 * @return the capacity
+	 */
+	public int getCapacity() {
+		return capacity;
+	}
+
+	/**
+	 * Sets the flow.
+	 *
+	 * @param flow
+	 *            the new flow
+	 */
+	public void setFlow(int flow) {
+		this.flow = flow;
+	}
+
+	/**
+	 * Gets the flow.
+	 *
+	 * @return the flow
+	 */
+	public int getFlow() {
+		return flow;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object arg0) {
 		if (arg0 instanceof Edge<?, ?>) {
@@ -86,14 +133,24 @@ public class Edge<T, W> {
 		return false;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.getSource(), this.getDestination());
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return source.toString() + "-" + weight.toString() + "->" + destination.toString();
+		return source.toString() + "->" + destination.toString();
 	}
 
 }

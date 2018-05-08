@@ -7,9 +7,9 @@ import java.util.List;
 import graph.models.Graph;
 import graph.models.Vertex;
 
-public class Prim<T, W> {
+public class Prim<T> {
 
-	public void build(Graph<T, W> graph) {
+	public void build(Graph<T, Integer> graph) {
 		for (Vertex<T> vertex : graph.getAllVertices()) {
 			vertex.setParent(null);
 			vertex.setDistance(Integer.MAX_VALUE);
@@ -29,10 +29,10 @@ public class Prim<T, W> {
 			minPriorityQueue.remove(u);
 			System.out.println("Adding to mst " + u);
 			for (Vertex<T> v : graph.getAdjacentVertices(u)) {
-				if (minPriorityQueue.contains(v) && weight(u, v) < v.getDistance()) {
+				if (minPriorityQueue.contains(v) && weight(graph, u, v) < v.getDistance()) {
 					// System.out.println("Updating " + v);
 					v.setParent(u);
-					v.setDistance(weight(u, v));
+					v.setDistance(weight(graph, u, v));
 					minPriorityQueue.sort(Comparator.comparingInt(Vertex::getDistance));
 					// System.out.println(minPriorityQueue);
 				}
@@ -40,7 +40,7 @@ public class Prim<T, W> {
 		}
 	}
 
-	private int weight(Vertex<T> u, Vertex<T> v) {
-		return u.getWeightsMap().get(v);
+	private int weight(Graph<T, Integer> graph, Vertex<T> u, Vertex<T> v) {
+		return graph.getEdge(u, v).getWeight();
 	}
 }

@@ -1,8 +1,7 @@
-package graph.apps.demos;
+package graph.apps;
 
 import java.util.Arrays;
 
-import graph.apps.DFS;
 import graph.models.Graph;
 import graph.models.GraphList;
 import graph.models.Vertex;
@@ -11,12 +10,12 @@ public class DFSDemo {
 	public static void main(String[] args) {
 		Graph<String, Integer> graph = new GraphList<>();
 
-		Vertex<String> u = new Vertex<String>(1, "u");
-		Vertex<String> v = new Vertex<String>(2, "v");
-		Vertex<String> w = new Vertex<String>(3, "w");
-		Vertex<String> x = new Vertex<String>(4, "x");
-		Vertex<String> y = new Vertex<String>(5, "y");
-		Vertex<String> z = new Vertex<String>(6, "z");
+		Vertex<String> u = new Vertex<>(1, "u");
+		Vertex<String> v = new Vertex<>(2, "v");
+		Vertex<String> w = new Vertex<>(3, "w");
+		Vertex<String> x = new Vertex<>(4, "x");
+		Vertex<String> y = new Vertex<>(5, "y");
+		Vertex<String> z = new Vertex<>(6, "z");
 
 		graph.initialize(Arrays.asList(u, v, w, x, y, z));
 

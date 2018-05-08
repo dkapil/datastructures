@@ -13,7 +13,7 @@ import graph.models.Vertex;
  * @param <T>
  *            the generic type
  */
-public class TopologicalSort<T, W> {
+public class TopologicalSort<T> {
 
 	int time = 0;
 
@@ -25,7 +25,7 @@ public class TopologicalSort<T, W> {
 	 * @param graph
 	 *            the graph
 	 */
-	public TopologicalSort(Graph<T, W> graph) {
+	public TopologicalSort(Graph<T, ?> graph) {
 		for (Vertex<T> vertex : graph.getAllVertices()) {
 			System.out.println("Initializing " + vertex.getValue());
 			vertex.setColor("WHITE");
@@ -49,7 +49,7 @@ public class TopologicalSort<T, W> {
 	 * @param time
 	 *            the time
 	 */
-	public void visit(Graph<T, W> graph, Vertex<T> u) {
+	public void visit(Graph<T, ?> graph, Vertex<T> u) {
 		time = time + 1;
 		u.setDiscoveredTime(time);
 		u.setColor("GRAY");

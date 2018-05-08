@@ -1,17 +1,16 @@
 package graph.models;
 
-public class GraphListUndirected<T> extends GraphList<T> {
+public class GraphListUndirected<T, W> extends GraphList<T, W> {
 
 	@Override
-	public Graph<T, Integer> addEdge(Vertex<T> start, Vertex<T> end) {
+	public Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end) {
 		map.get(end).add(start);
 		return super.addEdge(start, end);
 	}
 
 	@Override
-	public Graph<T, Integer> addEdge(Vertex<T> start, Vertex<T> end, Integer weight) {
-		map.get(end).add(start);
-		end.getWeightsMap().put(start, weight);
+	public Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end, W weight) {
+		super.addEdge(end, start, weight);
 		return super.addEdge(start, end, weight);
 	}
 

@@ -1,4 +1,4 @@
-package graph.apps;
+package graph.apps.shortestpaths.singlesource;
 
 import graph.models.Graph;
 import graph.models.Vertex;
@@ -12,20 +12,22 @@ import graph.models.Vertex;
  * @param <W>
  *            the generic type
  */
-public class SingleSource<T, W> {
+public class SingleSourceShortestPath<T> {
 
 	/**
 	 * Initialize single source.
 	 *
 	 * @param graph
 	 *            the graph
+	 * @param source
+	 *            TODO
 	 */
-	public void initializeSingleSource(Graph<T, W> graph) {
+	public void initializeSingleSource(Graph<T, ?> graph, Vertex<T> source) {
 		graph.getAllVertices().forEach(v -> {
 			v.setDistance(Integer.MAX_VALUE);
 			v.setParent(null);
 		});
-		graph.getAllVertices().iterator().next().setDistance(0);
+		source.setDistance(0);
 	}
 
 	/**
@@ -36,11 +38,14 @@ public class SingleSource<T, W> {
 	 * @param v
 	 *            the v
 	 */
-	public void relax(Vertex<T> u, Vertex<T> v) {
+	public void relax(Graph<T, Integer> graph, Vertex<T> u, Vertex<T> v) {
 		System.out.println("Relaxing Edge " + u + "->" + v);
-		if (v.getDistance() > u.getDistance() + u.getWeightsMap().get(v)) {
-			System.out.println("Updating " + v + " distance to " + (u.getDistance() + u.getWeightsMap().get(v)));
-			v.setDistance(u.getDistance() + u.getWeightsMap().get(v));
+		Integer wuv = graph.getEdge(u, v).getWeight();
+		int vd = v.getDistance();
+		int ud = u.getDistance();
+		if (vd > ud + wuv) {
+			System.out.println("Updating " + v + " distance to " + (ud + wuv));
+			v.setDistance(ud + wuv);
 			v.setParent(u);
 		}
 	}

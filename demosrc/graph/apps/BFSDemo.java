@@ -1,8 +1,7 @@
-package graph.apps.demos;
+package graph.apps;
 
 import java.util.Arrays;
 
-import graph.apps.BFS;
 import graph.models.Graph;
 import graph.models.GraphList;
 import graph.models.Vertex;
@@ -11,14 +10,14 @@ public class BFSDemo {
 	public static void main(String[] args) {
 		Graph<String, Integer> graph = new GraphList<>();
 
-		Vertex<String> r = new Vertex<String>(0, "r");
-		Vertex<String> s = new Vertex<String>(1, "s");
-		Vertex<String> t = new Vertex<String>(2, "t");
-		Vertex<String> u = new Vertex<String>(3, "u");
-		Vertex<String> v = new Vertex<String>(4, "v");
-		Vertex<String> w = new Vertex<String>(5, "w");
-		Vertex<String> x = new Vertex<String>(6, "x");
-		Vertex<String> y = new Vertex<String>(7, "y");
+		Vertex<String> r = new Vertex<>(0, "r");
+		Vertex<String> s = new Vertex<>(1, "s");
+		Vertex<String> t = new Vertex<>(2, "t");
+		Vertex<String> u = new Vertex<>(3, "u");
+		Vertex<String> v = new Vertex<>(4, "v");
+		Vertex<String> w = new Vertex<>(5, "w");
+		Vertex<String> x = new Vertex<>(6, "x");
+		Vertex<String> y = new Vertex<>(7, "y");
 
 		graph.initialize(Arrays.asList(r, s, t, u, v, w, x, y));
 		graph.addEdge(s, r).addEdge(s, w);

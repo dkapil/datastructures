@@ -1,6 +1,7 @@
 package graph.models;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -14,97 +15,176 @@ import java.util.Set;
  *
  * @param <T>
  *            the generic type
+ * @param <W>
+ *            the generic type
  */
-public class GraphList<T> implements Graph<T, Integer> {
+public class GraphList<T, W> implements Graph<T, W> {
 
 	Map<Vertex<T>, LinkedList<Vertex<T>>> map;
 
-	GraphType graphType;
+	Map<Vertex<T>, Map<Vertex<T>, W>> weights = new HashMap<>();
 
-	Vertex<T> rootVertex;
+	Map<Vertex<T>, Map<Vertex<T>, Integer>> flows = new HashMap<>();
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.graph.model.Graph#initialize(int)
+	Map<Vertex<T>, Map<Vertex<T>, Integer>> capacities = new HashMap<>();
+
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void initialize(Collection<Vertex<T>> vertices) {
 		map = new LinkedHashMap<>();
-		vertices.forEach(v -> map.put(v, new LinkedList<>()));
+		vertices.forEach(v -> {
+			map.put(v, new LinkedList<>());
+			weights.put(v, new HashMap<>());
+			flows.put(v, new HashMap<>());
+			capacities.put(v, new HashMap<>());
+		});
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.graph.model.Graph#getAllVertices()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public Set<Vertex<T>> getAllVertices() {
 		return map.keySet();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.graph.model.Graph#getAdjacentVertices(com.graph.model.Vertex)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
-	public Set<Vertex<T>> getAdjacentVertices(Vertex<T> start) {
-		return new LinkedHashSet<>(map.get(start));
+	public Set<Vertex<T>> getAdjacentVertices(Vertex<T> source) {
+		return new LinkedHashSet<>(map.get(source));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.graph.model.Graph#addEdge(java.lang.Object, java.lang.Object, int)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
-	public Graph<T, Integer> addEdge(Vertex<T> start, Vertex<T> end, Integer weight) {
-		map.get(start).add(end);
-		start.getWeightsMap().put(end, weight);
+	public void removeVertex(Vertex<T> vertex) {
+		map.remove(vertex);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Graph<T, W> addEdge(Vertex<T> source, Vertex<T> destination) {
+		map.get(source).add(destination);
 		return this;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.graph.model.Graph#addEdge(java.lang.Object, java.lang.Object)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
-	public Graph<T, Integer> addEdge(Vertex<T> start, Vertex<T> end) {
-		map.get(start).add(end);
+	public Graph<T, W> addEdge(Vertex<T> source, Vertex<T> destination, W weight) {
+		map.get(source).add(destination);
+		weights.get(source).put(destination, weight);
 		return this;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.graph.model.Graph#removeEdge(java.lang.Object, java.lang.Object)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
-	public void removeEdge(Vertex<T> start, Vertex<T> end) {
-		map.get(start.getValue()).remove(end);
+	public Graph<T, W> addEdge(Vertex<T> source, Vertex<T> destination, Integer flow, Integer capacity) {
+		map.get(source).add(destination);
+		flows.get(source).put(destination, flow);
+		capacities.get(source).put(destination, capacity);
+		return this;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.graph.model.Graph#print()
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
-	public void print() {
-		for (Entry<Vertex<T>, LinkedList<Vertex<T>>> entry : map.entrySet()) {
-			System.out.print(entry.getKey() + "->");
-			entry.getValue()
-					.forEach(p -> System.out.print("|" + p + ":" + entry.getKey().getWeightsMap().get(p) + "|"));
-			System.out.println();
+	public Graph<T, W> addEdge(Vertex<T> source, Vertex<T> destination, W weight, Integer flow, Integer capacity) {
+		map.get(source).add(destination);
+		weights.get(source).put(destination, weight);
+		flows.get(source).put(destination, flow);
+		capacities.get(source).put(destination, capacity);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Edge<T, W> getEdge(Vertex<T> source, Vertex<T> destination) {
+		Edge<T, W> edge = null;
+		LinkedList<Vertex<T>> adjacents = map.get(source);
+		if (adjacents.contains(destination)) {
+			edge = new Edge<>();
+			edge.setSource(source);
+			edge.setDestination(destination);
+			edge.setWeight(weights.get(source).get(destination));
+			edge.setFlow(flows.get(source).get(destination));
+			edge.setCapacity(capacities.get(source).get(destination));
 		}
+		return edge;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public Graph<T, Integer> transpose() {
-		Graph<T, Integer> transposedGraph = new GraphList<>();
+	public Set<Edge<T, W>> getAllEdges() {
+		Set<Edge<T, W>> edges = new LinkedHashSet<>();
+		for (Vertex<T> u : getAllVertices()) {
+			for (Vertex<T> v : getAdjacentVertices(u)) {
+				Edge<T, W> edge = getEdge(u, v);
+				edges.add(edge);
+			}
+		}
+		return edges;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Graph<T, W> updateEdge(Vertex<T> source, Vertex<T> destination, W weight) {
+		weights.get(source).put(destination, weight);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Graph<T, W> updateEdge(Vertex<T> source, Vertex<T> destination, Integer flow, Integer capacity) {
+		flows.get(source).put(destination, flow);
+		capacities.get(source).put(destination, capacity);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Graph<T, W> updateEdge(Vertex<T> source, Vertex<T> destination, W weight, Integer flow, Integer capacity) {
+		weights.get(source).put(destination, weight);
+		flows.get(source).put(destination, flow);
+		capacities.get(source).put(destination, capacity);
+		return this;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removeEdge(Vertex<T> source, Vertex<T> destination) {
+		map.get(source.getValue()).remove(destination);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Graph<T, W> transpose() {
+		Graph<T, W> transposedGraph = new GraphList<>();
 		transposedGraph.initialize(getAllVertices());
 		for (Vertex<T> vertex : getAllVertices()) {
 			for (Vertex<T> adjacentVertex : getAdjacentVertices(vertex)) {
@@ -114,23 +194,24 @@ public class GraphList<T> implements Graph<T, Integer> {
 		return transposedGraph;
 	}
 
-	public Graph<T, Integer> setType(GraphType graphType) {
-		this.graphType = graphType;
-		return this;
-	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public Set<Edge<T, Integer>> getAllEdges() {
-		Set<Edge<T, Integer>> edges = new LinkedHashSet<>();
-		for (Vertex<T> u : getAllVertices()) {
-			for (Vertex<T> v : getAdjacentVertices(u)) {
-				Edge<T, Integer> edge = new Edge<>();
-				edge.setSource(u);
-				edge.setDestination(v);
-				edge.setWeight(u.getWeightsMap().get(v));
-				edges.add(edge);
-			}
+	public void print() {
+		for (Entry<Vertex<T>, LinkedList<Vertex<T>>> entry : map.entrySet()) {
+			System.out.print(entry.getKey() + "->");
+			entry.getValue().forEach(p -> {
+				Edge<T, W> edge = getEdge(entry.getKey(), p);
+				StringBuilder builder = new StringBuilder("|" + p + ":{");
+				if (edge.getWeight() != null)
+					builder.append("W:" + edge.getWeight());
+				builder.append(" F:" + edge.getFlow());
+				builder.append(" C:" + edge.getCapacity());
+				builder.append("}");
+				System.out.print(builder + "|");
+			});
+			System.out.println();
 		}
-		return edges;
 	}
 }

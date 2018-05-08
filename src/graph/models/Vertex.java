@@ -3,6 +3,7 @@ package graph.models;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -12,6 +13,8 @@ import java.util.Objects;
  *            the generic type
  */
 public class Vertex<VALUE> {
+
+	Supplier<VALUE> supplier;
 
 	int id;
 
@@ -78,6 +81,11 @@ public class Vertex<VALUE> {
 	public Vertex(int id, VALUE value) {
 		this.id = id;
 		this.value = value;
+	}
+
+	public Vertex(int id, Supplier<VALUE> value) {
+		this.id = id;
+		this.value = value.get();
 	}
 
 	/*
@@ -198,9 +206,9 @@ public class Vertex<VALUE> {
 		this.value = value;
 	}
 
-	public Map<Vertex<VALUE>, Integer> getWeightsMap() {
-		return weightsMap;
-	}
+	// public Map<Vertex<VALUE>, Integer> getWeightsMap() {
+	// return weightsMap;
+	// }
 
 	/*
 	 * (non-Javadoc)
