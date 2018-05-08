@@ -9,15 +9,29 @@ public interface Graph<T, W> {
 
 	Set<Vertex<T>> getAllVertices();
 
+	Set<Vertex<T>> getAdjacentVertices(Vertex<T> source);
+
+	void removeVertex(Vertex<T> vertex);
+
+	Graph<T, W> addEdge(Vertex<T> source, Vertex<T> destination);
+
+	Graph<T, W> addEdge(Vertex<T> source, Vertex<T> destination, W weight);
+
+	Graph<T, W> addEdge(Vertex<T> source, Vertex<T> destination, Integer flow, Integer capacity);
+
+	Graph<T, W> addEdge(Vertex<T> source, Vertex<T> destination, W weight, Integer flow, Integer capacity);
+
+	Edge<T, W> getEdge(Vertex<T> source, Vertex<T> target);
+
 	Set<Edge<T, W>> getAllEdges();
 
-	Set<Vertex<T>> getAdjacentVertices(Vertex<T> start);
+	Graph<T, W> updateEdge(Vertex<T> source, Vertex<T> destination, W weight);
 
-	Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end, W weight);
+	Graph<T, W> updateEdge(Vertex<T> source, Vertex<T> destination, Integer flow, Integer capacity);
 
-	Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end);
+	Graph<T, W> updateEdge(Vertex<T> source, Vertex<T> destination, W weight, Integer flow, Integer capacity);
 
-	void removeEdge(Vertex<T> start, Vertex<T> end);
+	void removeEdge(Vertex<T> source, Vertex<T> destination);
 
 	Graph<T, W> transpose();
 

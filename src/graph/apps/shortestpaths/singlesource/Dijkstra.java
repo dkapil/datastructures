@@ -1,4 +1,4 @@
-package graph.apps;
+package graph.apps.shortestpaths.singlesource;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -9,11 +9,12 @@ import java.util.Set;
 import graph.models.Graph;
 import graph.models.Vertex;
 
-public class Dijkstra<T, W> extends SingleSource<T, W> {
+public class Dijkstra<T> extends SingleSourceShortestPath<T> {
 
-	public void build(Graph<T, W> graph) {
+	public void build(Graph<T, Integer> graph, Vertex<T> source) {
 
-		initializeSingleSource(graph);
+		System.out.println("Running Dijkstra");
+		initializeSingleSource(graph, source);
 
 		Set<Vertex<T>> s = new HashSet<>();
 
@@ -26,7 +27,7 @@ public class Dijkstra<T, W> extends SingleSource<T, W> {
 			q.remove(0);
 			s.add(u);
 			for (Vertex<T> v : graph.getAdjacentVertices(u)) {
-				relax(u, v);
+				relax(graph, u, v);
 			}
 			q.sort(Comparator.comparingInt(Vertex::getDistance));
 		}

@@ -16,8 +16,28 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-		</plugins>
-	</build>
+			<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>build-helper-maven-plugin</artifactId>
+			<version>1.10</version>
+			<executions>
+			  <execution>
+				<id>add-source</id>
+				<phase>generate-sources</phase>
+				<goals>
+				  <goal>add-source</goal>
+				</goals>
+				<configuration>
+				  <sources>
+					<source>src</source>
+					<source>demosrc</source>
+				  </sources>
+				</configuration>
+			  </execution>
+			</executions>
+		  </plugin>
+    </plugins>
+  </build>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>

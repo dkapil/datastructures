@@ -1,8 +1,7 @@
-package disjointset.apps.demos;
+package disjointset.apps;
 
 import java.util.Arrays;
 
-import disjointset.apps.ConnectedComponentsForest;
 import disjointset.models.DisjoinSetForest;
 import disjointset.models.DisjointSet;
 import disjointset.models.ForestElement;
@@ -14,16 +13,16 @@ public class ConnectedComponentsForestDemo {
 	public static void main(String[] args) {
 		Graph<String, Integer> graph = new GraphListUndirected<>();
 
-		Vertex<String> a = new Vertex<String>(1, "a");
-		Vertex<String> b = new Vertex<String>(2, "b");
-		Vertex<String> c = new Vertex<String>(3, "c");
-		Vertex<String> d = new Vertex<String>(4, "d");
-		Vertex<String> e = new Vertex<String>(5, "e");
-		Vertex<String> f = new Vertex<String>(6, "f");
-		Vertex<String> g = new Vertex<String>(7, "g");
-		Vertex<String> h = new Vertex<String>(8, "h");
-		Vertex<String> i = new Vertex<String>(9, "i");
-		Vertex<String> j = new Vertex<String>(10, "j");
+		Vertex<String> a = new Vertex<>(1, "a");
+		Vertex<String> b = new Vertex<>(2, "b");
+		Vertex<String> c = new Vertex<>(3, "c");
+		Vertex<String> d = new Vertex<>(4, "d");
+		Vertex<String> e = new Vertex<>(5, "e");
+		Vertex<String> f = new Vertex<>(6, "f");
+		Vertex<String> g = new Vertex<>(7, "g");
+		Vertex<String> h = new Vertex<>(8, "h");
+		Vertex<String> i = new Vertex<>(9, "i");
+		Vertex<String> j = new Vertex<>(10, "j");
 
 		graph.initialize(Arrays.asList(a, b, c, d, e, f, g, h, i, j));
 

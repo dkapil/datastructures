@@ -1,10 +1,9 @@
-package graph.apps.demos;
+package graph.apps;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import graph.apps.SCC;
 import graph.models.Graph;
 import graph.models.GraphList;
 import graph.models.Vertex;
@@ -14,14 +13,14 @@ public class SCCDemo {
 
 		Graph<String, Integer> graph = new GraphList<>();
 
-		Vertex<String> a = new Vertex<String>(1, "a");
-		Vertex<String> b = new Vertex<String>(2, "b");
-		Vertex<String> c = new Vertex<String>(3, "c");
-		Vertex<String> d = new Vertex<String>(4, "d");
-		Vertex<String> e = new Vertex<String>(5, "e");
-		Vertex<String> f = new Vertex<String>(6, "f");
-		Vertex<String> g = new Vertex<String>(7, "g");
-		Vertex<String> h = new Vertex<String>(8, "h");
+		Vertex<String> a = new Vertex<>(1, "a");
+		Vertex<String> b = new Vertex<>(2, "b");
+		Vertex<String> c = new Vertex<>(3, "c");
+		Vertex<String> d = new Vertex<>(4, "d");
+		Vertex<String> e = new Vertex<>(5, "e");
+		Vertex<String> f = new Vertex<>(6, "f");
+		Vertex<String> g = new Vertex<>(7, "g");
+		Vertex<String> h = new Vertex<>(8, "h");
 
 		graph.initialize(Arrays.asList(c, g, f, h, d, b, e, a));
 

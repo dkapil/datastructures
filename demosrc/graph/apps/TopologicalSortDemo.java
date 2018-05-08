@@ -1,8 +1,7 @@
-package graph.apps.demos;
+package graph.apps;
 
 import java.util.Arrays;
 
-import graph.apps.TopologicalSort;
 import graph.models.Graph;
 import graph.models.GraphList;
 import graph.models.Vertex;
@@ -23,18 +22,18 @@ public class TopologicalSortDemo {
 
 		Graph<String, Integer> graph = new GraphList<>();
 
-		Vertex<String> shirt = new Vertex<String>(1, "shirt");
-		Vertex<String> tie = new Vertex<String>(2, "tie");
-		Vertex<String> jacket = new Vertex<String>(3, "jacket");
-		Vertex<String> belt = new Vertex<String>(4, "belt");
+		Vertex<String> shirt = new Vertex<>(1, "shirt");
+		Vertex<String> tie = new Vertex<>(2, "tie");
+		Vertex<String> jacket = new Vertex<>(3, "jacket");
+		Vertex<String> belt = new Vertex<>(4, "belt");
 
-		Vertex<String> watch = new Vertex<String>(5, "watch");
+		Vertex<String> watch = new Vertex<>(5, "watch");
 
-		Vertex<String> undershorts = new Vertex<String>(6, "undershorts");
-		Vertex<String> pants = new Vertex<String>(7, "pants");
-		Vertex<String> shoes = new Vertex<String>(8, "shoes");
+		Vertex<String> undershorts = new Vertex<>(6, "undershorts");
+		Vertex<String> pants = new Vertex<>(7, "pants");
+		Vertex<String> shoes = new Vertex<>(8, "shoes");
 
-		Vertex<String> socks = new Vertex<String>(9, "socks");
+		Vertex<String> socks = new Vertex<>(9, "socks");
 
 		graph.initialize(Arrays.asList(shirt, tie, jacket, belt, watch, undershorts, pants, shoes, socks));
 
@@ -46,7 +45,7 @@ public class TopologicalSortDemo {
 
 		graph.print();
 
-		TopologicalSort<String, Integer> dfs = new TopologicalSort<>(graph);
+		TopologicalSort<String> dfs = new TopologicalSort<>(graph);
 
 		for (Vertex<String> vertex : graph.getAllVertices()) {
 			System.out.println(vertex.getValue() + "-" + vertex.getDiscoveredTime() + "-" + vertex.getFinishedTime());

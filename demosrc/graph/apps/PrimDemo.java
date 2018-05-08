@@ -1,8 +1,7 @@
-package graph.apps.demos;
+package graph.apps;
 
 import java.util.Arrays;
 
-import graph.apps.Prim;
 import graph.models.Graph;
 import graph.models.GraphListUndirected;
 import graph.models.Vertex;
@@ -12,15 +11,15 @@ public class PrimDemo {
 	public static void main(String[] args) {
 		Graph<String, Integer> graph = new GraphListUndirected<>();
 
-		Vertex<String> a = new Vertex<String>(1, "a");
-		Vertex<String> b = new Vertex<String>(2, "b");
-		Vertex<String> c = new Vertex<String>(3, "c");
-		Vertex<String> d = new Vertex<String>(4, "d");
-		Vertex<String> e = new Vertex<String>(5, "e");
-		Vertex<String> f = new Vertex<String>(6, "f");
-		Vertex<String> g = new Vertex<String>(7, "g");
-		Vertex<String> h = new Vertex<String>(8, "h");
-		Vertex<String> i = new Vertex<String>(9, "i");
+		Vertex<String> a = new Vertex<>(1, "a");
+		Vertex<String> b = new Vertex<>(2, "b");
+		Vertex<String> c = new Vertex<>(3, "c");
+		Vertex<String> d = new Vertex<>(4, "d");
+		Vertex<String> e = new Vertex<>(5, "e");
+		Vertex<String> f = new Vertex<>(6, "f");
+		Vertex<String> g = new Vertex<>(7, "g");
+		Vertex<String> h = new Vertex<>(8, "h");
+		Vertex<String> i = new Vertex<>(9, "i");
 
 		graph.initialize(Arrays.asList(a, b, c, d, e, f, g, h, i));
 
@@ -35,7 +34,7 @@ public class PrimDemo {
 
 		graph.print();
 
-		Prim<String, Integer> prim = new Prim<>();
+		Prim<String> prim = new Prim<>();
 		prim.build(graph);
 
 	}

@@ -28,9 +28,63 @@ public class GraphMatrix<T, W extends Object> implements Graph<T, W> {
 	}
 
 	@Override
+	public void removeVertex(Vertex<T> vertex) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
 	public Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end) {
 		arr2d[start.getId()][end.getId()] = 1;
 		return this;
+	}
+
+	@Override
+	public Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end, W weight) {
+		arr2d[start.getId()][end.getId()] = weight;
+		return this;
+	}
+
+	@Override
+	public Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end, Integer flow, Integer capacity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end, W weight, Integer flow, Integer capacity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Edge<T, W> getEdge(Vertex<T> source, Vertex<T> target) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Edge<T, W>> getAllEdges() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Graph<T, W> updateEdge(Vertex<T> start, Vertex<T> end, W weight) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Graph<T, W> updateEdge(Vertex<T> start, Vertex<T> end, Integer flow, Integer capacity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Graph<T, W> updateEdge(Vertex<T> start, Vertex<T> end, W weight, Integer flow, Integer capacity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -39,9 +93,9 @@ public class GraphMatrix<T, W extends Object> implements Graph<T, W> {
 	}
 
 	@Override
-	public Graph<T, W> addEdge(Vertex<T> start, Vertex<T> end, W weight) {
-		arr2d[start.getId()][end.getId()] = weight;
-		return this;
+	public Graph<T, W> transpose() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -54,15 +108,4 @@ public class GraphMatrix<T, W extends Object> implements Graph<T, W> {
 		}
 	}
 
-	@Override
-	public Graph<T, W> transpose() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Set<Edge<T, W>> getAllEdges() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
