@@ -14,12 +14,23 @@ import graph.models.Edge;
 import graph.models.Graph;
 import graph.models.Vertex;
 
+/**
+ * Kruskal
+ *
+ * @param <T> the generic type
+ * @param <W> the generic type
+ */
 public class Kruskal<T, W extends Comparable<W>> {
 
 	Graph<T, W> graph;
 
 	Map<Vertex<T>, ForestElement<T>> vertexForestElementMap = new HashMap<>();
 
+	/**
+	 * Build
+	 *
+	 * @param graph the graph
+	 */
 	public void build(Graph<T, W> graph) {
 		DisjointSet<ForestElement<T>> disjointSet = new DisjoinSetForest<>();
 

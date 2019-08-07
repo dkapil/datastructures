@@ -3,12 +3,10 @@ package graph.apps;
 import graph.models.Graph;
 import graph.models.Vertex;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class DFS.
+ * The DFS.
  *
- * @param <T>
- *            the generic type
+ * @param <T> the generic type
  */
 public class DFS<T, W> {
 
@@ -17,8 +15,7 @@ public class DFS<T, W> {
 	/**
 	 * Instantiates a new dfs.
 	 *
-	 * @param graph
-	 *            the graph
+	 * @param graph the graph
 	 */
 	public DFS(Graph<T, W> graph) {
 		for (Vertex<T> vertex : graph.getAllVertices()) {
@@ -37,12 +34,9 @@ public class DFS<T, W> {
 	/**
 	 * Visit.
 	 *
-	 * @param graph
-	 *            the graph
-	 * @param u
-	 *            the vertex
-	 * @param time
-	 *            the time
+	 * @param graph the graph
+	 * @param u     the vertex
+	 * @param time  the time
 	 */
 	public void visit(Graph<T, W> graph, Vertex<T> u) {
 		time = time + 1;

@@ -6,9 +6,8 @@ import java.util.LinkedList;
 import graph.models.Graph;
 import graph.models.Vertex;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class DFS.
+ * Topological Sort
  *
  * @param <T>
  *            the generic type

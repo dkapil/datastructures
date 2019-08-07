@@ -9,14 +9,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class GraphList.
+ * GraphList.
  *
- * @param <T>
- *            the generic type
- * @param <W>
- *            the generic type
+ * @param <T> the generic type
+ * @param <W> the generic type
  */
 public class GraphList<T, W> implements Graph<T, W> {
 

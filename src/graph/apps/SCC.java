@@ -9,12 +9,10 @@ import java.util.stream.Collectors;
 import graph.models.Graph;
 import graph.models.Vertex;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class DFS.
+ * SCC
  *
- * @param <T>
- *            the generic type
+ * @param <T> the generic type
  */
 public class SCC<T, W> {
 
@@ -23,10 +21,9 @@ public class SCC<T, W> {
 	List<LinkedList<Vertex<T>>> sccS = new ArrayList<>();
 
 	/**
-	 * Instantiates a new dfs.
+	 * Instantiates a new scc.
 	 *
-	 * @param graph
-	 *            the graph
+	 * @param graph the graph
 	 */
 	public SCC(Graph<T, W> graph) {
 
@@ -61,13 +58,10 @@ public class SCC<T, W> {
 	/**
 	 * Visit.
 	 *
-	 * @param graphT
-	 *            the graph
-	 * @param u
-	 *            the vertex
+	 * @param graphT the graph
+	 * @param u      the vertex
 	 * @param scc
-	 * @param time
-	 *            the time
+	 * @param time   the time
 	 */
 	public void visit(Graph<T, W> graphT, Vertex<T> u, List<Vertex<T>> scc) {
 		scc.add(u);

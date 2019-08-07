@@ -5,12 +5,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Vertex.
+ * The Vertex.
  *
- * @param <VALUE>
- *            the generic type
+ * @param <VALUE> the generic type
  */
 public class Vertex<VALUE> {
 
@@ -40,8 +38,7 @@ public class Vertex<VALUE> {
 	/**
 	 * Sets the discovered time.
 	 *
-	 * @param discoveredTime
-	 *            the new discovered time
+	 * @param discoveredTime the new discovered time
 	 */
 	public void setDiscoveredTime(int discoveredTime) {
 		this.discoveredTime = discoveredTime;
@@ -59,8 +56,7 @@ public class Vertex<VALUE> {
 	/**
 	 * Sets the finished time.
 	 *
-	 * @param finishedTime
-	 *            the new finished time
+	 * @param finishedTime the new finished time
 	 */
 	public void setFinishedTime(int finishedTime) {
 		this.finishedTime = finishedTime;
@@ -73,10 +69,8 @@ public class Vertex<VALUE> {
 	/**
 	 * Instantiates a new vertex.
 	 *
-	 * @param id
-	 *            the id
-	 * @param value
-	 *            the value
+	 * @param id    the id
+	 * @param value the value
 	 */
 	public Vertex(int id, VALUE value) {
 		this.id = id;
@@ -159,8 +153,7 @@ public class Vertex<VALUE> {
 	/**
 	 * Sets the color.
 	 *
-	 * @param color
-	 *            the new color
+	 * @param color the new color
 	 */
 	public void setColor(String color) {
 		this.color = color;
@@ -169,8 +162,7 @@ public class Vertex<VALUE> {
 	/**
 	 * Sets the distance.
 	 *
-	 * @param distance
-	 *            the new distance
+	 * @param distance the new distance
 	 */
 	public void setDistance(int distance) {
 		this.distance = distance;
@@ -179,8 +171,7 @@ public class Vertex<VALUE> {
 	/**
 	 * Sets the id.
 	 *
-	 * @param id
-	 *            the new id
+	 * @param id the new id
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -189,8 +180,7 @@ public class Vertex<VALUE> {
 	/**
 	 * Sets the parent.
 	 *
-	 * @param parent
-	 *            the new parent
+	 * @param parent the new parent
 	 */
 	public void setParent(Vertex<VALUE> parent) {
 		this.parent = parent;
@@ -199,8 +189,7 @@ public class Vertex<VALUE> {
 	/**
 	 * Sets the value.
 	 *
-	 * @param value
-	 *            the new value
+	 * @param value the new value
 	 */
 	public void setValue(VALUE value) {
 		this.value = value;

@@ -7,8 +7,18 @@ import java.util.List;
 import graph.models.Graph;
 import graph.models.Vertex;
 
+/**
+ * Prim
+ *
+ * @param <T> the generic type
+ */
 public class Prim<T> {
 
+	/**
+	 * Build
+	 *
+	 * @param graph the graph
+	 */
 	public void build(Graph<T, Integer> graph) {
 		for (Vertex<T> vertex : graph.getAllVertices()) {
 			vertex.setParent(null);
@@ -40,6 +50,14 @@ public class Prim<T> {
 		}
 	}
 
+	/**
+	 * Weight.
+	 *
+	 * @param graph the graph
+	 * @param u     the u
+	 * @param v     the v
+	 * @return the int
+	 */
 	private int weight(Graph<T, Integer> graph, Vertex<T> u, Vertex<T> v) {
 		return graph.getEdge(u, v).getWeight();
 	}

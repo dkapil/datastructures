@@ -6,20 +6,17 @@ import java.util.Queue;
 import graph.models.Graph;
 import graph.models.Vertex;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class BFS.
+ * BFS.
  *
- * @param <T>
- *            the generic type
+ * @param <T> the generic type
  */
 public class BFS<T, W> {
 
 	/**
 	 * Search.
 	 *
-	 * @param graph
-	 *            the graph
+	 * @param graph the graph
 	 */
 	public BFS(Graph<T, W> graph) {
 		for (Vertex<T> vertex : graph.getAllVertices()) {
@@ -54,10 +51,8 @@ public class BFS<T, W> {
 	/**
 	 * Prints the path.
 	 *
-	 * @param source
-	 *            the source
-	 * @param target
-	 *            the target
+	 * @param source the source
+	 * @param target the target
 	 */
 	public void printPath(Vertex<T> source, Vertex<T> target) {
 		System.out.println("Printing Path Between " + source + " and " + target);
@@ -68,10 +63,8 @@ public class BFS<T, W> {
 	/**
 	 * Prints the.
 	 *
-	 * @param source
-	 *            the source
-	 * @param target
-	 *            the target
+	 * @param source the source
+	 * @param target the target
 	 */
 	private void print(Vertex<T> source, Vertex<T> target) {
 		if (target == source) {
